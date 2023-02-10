@@ -10,7 +10,7 @@ contract RoyaltyNFT is ERC721Enumerable, Ownable {
 
   bool public paused = false;
 
-  uint256 total_volume = 0;
+  uint256 public total_volume = 0;
 
   mapping(address => uint256) private royaltysBalance;
 
