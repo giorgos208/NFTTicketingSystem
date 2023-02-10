@@ -10,6 +10,8 @@ contract RoyaltyNFT is ERC721Enumerable, Ownable {
 
   bool public paused = false;
 
+  uint256 total_volume = 0;
+
   mapping(address => uint256) private royaltysBalance;
 
   mapping(address => bool) private registered;
@@ -59,6 +61,8 @@ contract RoyaltyNFT is ERC721Enumerable, Ownable {
     (bool success, ) = payable(msg.sender).call{value: royaltysBalance[msg.sender]}("");
   
     require(success);
+
+    total_volume = total_volume + royaltysBalance[msg.sender];
 
     royaltysBalance[msg.sender] = 0;
   
